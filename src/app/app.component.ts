@@ -4,20 +4,16 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
-import { ToastComponent } from './components/toast/toast.component';
-import { AuthGuard } from './guards/auth.guard';
-import { NavBarComponent } from './sheq-ig/nav-bar/nav-bar.component';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, FormsModule],
   template: `
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss'],
-  providers: [AuthGuard],
+ 
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'my-pos';
@@ -41,8 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private hasInitialRedirectHandled = false;
 
   constructor(
-    private router: Router,
-    private authService: AuthService
+    public router: Router,
   ) {}
 
   ngOnInit() {
@@ -57,15 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.updateNavbarVisibility(this.router.url);
 
     // FIXED: Wait for auth initialization before handling routes
-    this.authService.authInitialized$.pipe(
-      filter(initialized => initialized),
-      take(1)
-    ).subscribe(() => {
-      if (!this.hasInitialRedirectHandled) {
-        this.handleInitialRoute();
-        this.hasInitialRedirectHandled = true;
-      }
-    });
+   
 
     console.log('🚀 App component initialized, waiting for Firebase auth...');
   }
@@ -100,9 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private handleInitialRoute() {
     const currentRoute = this.router.url;
-    const user = this.authService.getCurrentUser();
     
-    console.log('🔍 Handling initial route - Route:', currentRoute, 'User:', user ? user.email : 'No user');
     
     // Define public routes that don't require authentication
     const publicRoutes = ['/log-in', '/create-user-account', '/get-started', '/landing-page'];
@@ -113,15 +98,6 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
     
-    // If trying to access protected route without authentication
-    if (!user && !isPublicRoute) {
-      console.log('🔒 Redirecting to login from protected route:', currentRoute);
-      this.router.navigate(['/log-in'], { 
-        queryParams: { returnUrl: currentRoute },
-        replaceUrl: true 
-      });
-    } else if (user) {
-      console.log('✅ Authenticated user accessing:', currentRoute);
-    }
+    
   }
 }
