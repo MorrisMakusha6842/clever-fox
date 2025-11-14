@@ -5,6 +5,7 @@ import { MainlayoutComponent } from './mainlayout/mainlayout.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FunctionalityComponent } from './functionality/functionality.component';
+import { authGuard } from '../services/auth.guard';
 
 
 export const routes: Routes = [
@@ -23,11 +24,13 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'mainlayout',
-    component: MainlayoutComponent
+    component: MainlayoutComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'functionality',
