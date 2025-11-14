@@ -1,2 +1,106 @@
-<p class="bg-red-300 w-full h-12 flex items-center justify-center"
->landing-page works!</p>
+<div class="landing-page">
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="logo">Clever Fox</div>
+      <div class="nav-links">
+        <a class="cursor-pointer" href="#">Home</a>
+        <a class="cursor-pointer" href="#features">Features</a>
+        <a class="cursor-pointer" href="#mission">About</a>
+        <a class="cursor-pointer" href="#">Help</a>
+      </div>
+      <div class="nav-auth">
+        <a (click)="navigateTo('log-in')" class="ghost-button cursor-pointer">Log In</a>
+        <a (click)="navigateTo('functionality')" class="signup-button cursor-pointer">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Your Security, Amplified.</h1>
+      <p>Clever Fox integrates Nmap, osquery, and cutting-edge AI to provide unparalleled security analytics and proactive threat response. Empower your team with our adaptive training modules.</p>
+      <div class="hero-buttons">
+        <button (click)="navigateTo('functionality')" class="cta-button">Get Started</button>
+        <button class="secondary-button">Explore Features</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Features Section -->
+  <section id="features" class="new-features-section">
+    <div class="section-title">
+      <h2>Core Features</h2>
+    </div>
+    <div class="feature-item">
+      <div class="feature-text">
+        <h3>AI-Powered Threat Intelligence</h3>
+        <p>Our system leverages advanced AI algorithms to analyze data from Nmap and osquery, identifying potential threats and vulnerabilities in real-time. Stay ahead of attackers with predictive analytics and automated alerts.</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/images/abstract-01.jpg" alt="AI Threat Intelligence">
+      </div>
+    </div>
+    <div class="feature-item reverse">
+      <div class="feature-text">
+        <h3>Cross-Platform Endpoint Monitoring</h3>
+        <p>With osquery, Clever Fox provides deep visibility into your endpoints across Windows, macOS, and Linux. Monitor system activity, detect policy violations, and investigate incidents from a unified dashboard.</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/images/image-devices.png" alt="Endpoint Monitoring">
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-text">
+        <h3>Comprehensive Network Scanning</h3>
+        <p>Utilizing the power of Nmap, our platform performs continuous network scanning to discover devices, identify open ports, and detect unauthorized services. Maintain a complete and up-to-date inventory of your network assets.</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/images/machine-txt-2.avif" alt="Network Scanning">
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section (Previously Features) -->
+  <section id="mission" class="mission-section">
+    <div class="section-title">
+      <h2>Our Mission</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Proactive Threat Detection</h3>
+        <p>To empower businesses and individuals with the tools and knowledge to protect their digital assets from evolving cyber threats.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>In-Depth Vulnerability Analysis</h3>
+        <p>We are dedicated to solving complex technical security issues with innovative and accessible solutions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Continuous Security Training</h3>
+        <p>Providing continuous training to keep your team ahead of the curve in the ever-changing landscape of cybersecurity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Clever Fox Security. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+</div>

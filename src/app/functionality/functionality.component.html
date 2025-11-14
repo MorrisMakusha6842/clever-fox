@@ -1,1 +1,21 @@
-<p>functionality works!</p>
+<div class="functionality-container">
+  <header class="welcome-header">
+    <div class="logo-container">
+      <img src="assets/images/logo.svg" alt="Logo" class="logo">
+      <span class="software-name">Clever Fox</span>
+    </div>
+    <h1>How It Works</h1>
+    <p>Get started with our platform in just a few simple steps. Explore the powerful features that await you.</p>
+  </header>
+
+  <section class="features-grid">
+    <div class="card" *ngFor="let feature of features">
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+    </div>
+  </section>
+
+  <div class="create-account-action">
+    <button (click)="navigateTo('sign-up')">Create Account</button>
+  </div>
+</div>

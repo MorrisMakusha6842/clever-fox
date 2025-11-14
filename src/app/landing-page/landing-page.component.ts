@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
 export class LandingPageComponent {
 
+  constructor(private router: Router) {}
+
+  navigateTo(path: string): void {
+    this.router.navigate([path]);
+  }
 }

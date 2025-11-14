@@ -1,5 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --dark-gray: #1a1a1a;
+  --orange: #FFA500;
+  --white: #FFFFFF;
+}
+
+body {
+
+  font-family: 'Poppins', sans-serif;
+
+  background-color: var(--dark-gray);
+
+  color: var(--white);
+
+}
+
+
+
+.card {
+
+  background-color: #2a2a2a;
+
+  border: 1px solid #444;
+
+  border-radius: 8px;
+
+  padding: 20px;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  transition: transform 0.3s ease;
+
+}
+
+
+
+.card:hover {
+
+  transform: translateY(-5px);
+
+}

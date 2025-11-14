@@ -1,0 +1,84 @@
+.functionality-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.welcome-header {
+  margin-bottom: 40px;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    width: 80px;
+    margin-right: 10px;
+    filter: invert(50%) sepia(100%) saturate(1000%) hue-rotate(0deg);
+  }
+
+  .software-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--orange);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.card {
+  text-align: left;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--orange);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+  }
+}
+
+.create-account-action {
+  button {
+    background-color: var(--orange);
+    color: var(--dark-gray);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #ffc107;
+    }
+  }
+}

@@ -1,0 +1,255 @@
+/* General Styling */
+.landing-page {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background-color: var(--dark-gray);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--orange);
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+.nav-auth a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.ghost-button {
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  margin-right: 1rem;
+}
+
+.ghost-button:hover {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+}
+
+.signup-button {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  border: 2px solid var(--orange);
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 8rem 2rem 4rem;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cta-button, .secondary-button {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.8rem 2.5rem;
+  border-radius: 12px;
+  border: 2px solid var(--orange);
+  transition: all 0.3s ease;
+}
+
+.cta-button {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: var(--orange);
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--orange);
+}
+
+.secondary-button:hover {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+}
+
+/* New Features Section */
+.new-features-section {
+  padding: 5rem 2rem;
+  background-color: var(--white);
+  color: var(--dark-gray);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.feature-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+
+.feature-item.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.feature-item.reverse .feature-text {
+  order: 2;
+}
+
+.feature-text h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--orange);
+}
+
+.feature-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.feature-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 5rem 2rem;
+  background-color: var(--dark-gray);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #2a2a2a;
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #444;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--orange);
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Footer */
+.footer {
+  background-color: #111111;
+  padding: 3rem 2rem;
+  border-top: 1px solid #333;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+}

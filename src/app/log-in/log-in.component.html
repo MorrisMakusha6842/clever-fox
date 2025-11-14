@@ -1,1 +1,24 @@
-<p>log-in works!</p>
+<div class="login-container">
+  <div class="login-card card">
+    <div class="logo-container">
+      <img src="assets/images/logo.svg" alt="Logo" class="logo">
+      <span class="software-name">Clever Fox</span>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Log in to continue</p>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required ngModel #email="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required ngModel #password="ngModel">
+      </div>
+      <button type="submit" [disabled]="!loginForm.form.valid">Log In</button>
+    </form>
+    <div class="signup-link">
+      <p>Don't have an account? <a (click)="navigateTo('sign-up')">Sign Up</a></p>
+    </div>
+  </div>
+</div>
