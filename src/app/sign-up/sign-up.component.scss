@@ -121,3 +121,29 @@ button {
     }
   }
 }
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #4285F4;
+  border: 1px solid #ddd;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'SF Pro Display', sans-serif;
+  border-radius: 9999px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+  }
+
+  &:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}

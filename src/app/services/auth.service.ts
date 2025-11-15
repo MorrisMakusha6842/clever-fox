@@ -1,37 +1,93 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  authState,
+  User,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendEmailVerification,
+  updateProfile,
+} from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { AgentsService, Agent } from './agents.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private readonly FAKE_USER = { name: 'John Doe', email: 'john.doe@example.com' };
-  private readonly AUTH_STORAGE_KEY = 'my-pos-auth';
+  private auth: Auth = inject(Auth);
+  private router: Router = inject(Router);
+  private agentsService: AgentsService = inject(AgentsService);
 
-  currentUser = signal<any | null>(null);
+  currentUser: Observable<User | null> = authState(this.auth);
 
-  constructor(private router: Router) {
-    const storedUser = localStorage.getItem(this.AUTH_STORAGE_KEY);
-    if (storedUser) {
-      this.currentUser.set(JSON.parse(storedUser));
+  async loginWithEmail(email: string,password: string): Promise<void> {
+    try {
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      if (userCredential.user) {
+        this.router.navigate(['/mainlayout']);
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+      throw error;
     }
   }
 
-  login() {
-    // In a real app, you'd have actual authentication logic here.
-    // For this example, we'll just set a fake user.
-    localStorage.setItem(this.AUTH_STORAGE_KEY, JSON.stringify(this.FAKE_USER));
-    this.currentUser.set(this.FAKE_USER);
-    this.router.navigate(['/dashboard']);
+  async registerWithEmail(email: string, password: string, displayName: string): Promise<void> {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const user = userCredential.user;
+      if (user) {
+        await updateProfile(user, { displayName });
+        await sendEmailVerification(user);
+        const agent: Agent = {
+          uid: user.uid,
+          email: user.email!,
+          displayName: displayName,
+        };
+        this.agentsService.addAgent(agent).subscribe({
+          next: () => this.router.navigate(['/mainlayout']),
+          error: (err) => console.error('Failed to add agent:', err),
+        });
+      }
+    } catch (error) {
+      console.error('Registration failed:', error);
+      throw error;
+    }
   }
 
-  logout() {
-    localStorage.removeItem(this.AUTH_STORAGE_KEY);
-    this.currentUser.set(null);
+  async loginWithGoogle(): Promise<void> {
+    try {
+      const provider = new GoogleAuthProvider();
+      const userCredential = await signInWithPopup(this.auth, provider);
+      const user = userCredential.user;
+      if (user) {
+        const agent: Agent = {
+          uid: user.uid,
+          email: user.email!,
+          displayName: user.displayName || '',
+        };
+        this.agentsService.addAgent(agent).subscribe({
+          next: () => this.router.navigate(['/mainlayout']),
+          error: (err) => console.error('Failed to add agent:', err),
+        });
+      }
+    } catch (error) {
+      console.error('Google login failed:', error);
+      throw error;
+    }
+  }
+
+  async logout(): Promise<void> {
+    await signOut(this.auth);
     this.router.navigate(['/log-in']);
   }
 
   isAuthenticated(): boolean {
-    return !!this.currentUser();
+    return !!this.auth.currentUser;
   }
 }
