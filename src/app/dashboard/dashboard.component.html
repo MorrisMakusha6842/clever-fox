@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<div class="dashboard-grid">
+  <section class="hero-section">
+    <app-system-health></app-system-health>
+    <app-device-overview></app-device-overview>
+    <app-quick-scan></app-quick-scan>
+    <app-latest-alerts></app-latest-alerts>
+  </section>
+
+  <section class="charts-section">
+    <app-system-health-chart></app-system-health-chart>
+    <app-security-scan-history></app-security-scan-history>
+  </section>
+
+  <section class="tables-section">
+    <app-osquery-result></app-osquery-result>
+    <app-nmap-result></app-nmap-result>
+    <app-ai-insight></app-ai-insight>
+  </section>
+</div>

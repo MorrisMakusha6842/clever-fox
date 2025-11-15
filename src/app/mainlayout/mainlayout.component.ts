@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './mainlayout.component.scss'
 })
 export class MainlayoutComponent {
-  isSidenavCollapsed = false;
+  isSidenavCollapsed = true;
 
   toggleSidenav() {
     this.isSidenavCollapsed = !this.isSidenavCollapsed;

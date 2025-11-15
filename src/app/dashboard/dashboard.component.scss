@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  background-color: var(--dark-gray);
+  /* Removed padding and border-radius from host to give more space */
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 20px;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.tables-section {
+  display: grid;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    grid-template-rows: auto;
+  }
+  .charts-section {
+    grid-template-columns: 1fr; /* Stack charts on smaller screens */
+  }
+}

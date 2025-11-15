@@ -27,7 +27,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: width 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .main-layout.sidenav-collapsed .sidenav {
@@ -43,9 +44,10 @@
   margin-bottom: 30px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0 15px;
+  justify-content: space-between;
+  padding: 0 10px 0 20px;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .main-layout.sidenav-collapsed .ai-section {
@@ -53,6 +55,19 @@
   border-radius: 50%;
   justify-content: center;
   padding: 0;
+}
+
+.ai-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: -webkit-linear-gradient(45deg, #007bff, #00aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.main-layout.sidenav-collapsed .ai-text {
+  display: none;
 }
 
 .toggle-btn {
@@ -68,12 +83,19 @@
   width: 24px;
   height: 24px;
   color: var(--dark-gray);
+  transition: transform 0.3s ease;
+}
+
+.main-layout.sidenav-collapsed .toggle-btn svg {
+  transform: rotate(180deg);
 }
 
 .sidenav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .sidenav ul li a {
@@ -93,6 +115,7 @@
   margin-right: 15px;
   color: var(--white);
   transition: color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .main-layout.sidenav-collapsed .sidenav ul li a {
@@ -108,36 +131,63 @@
   margin-right: 0;
 }
 
-.sidenav ul li a:hover {
+.sidenav ul li a:hover, .sidenav ul li a.active {
   color: var(--orange);
 }
 
-.sidenav ul li a:hover svg {
+.sidenav ul li a:hover svg, .sidenav ul li a.active svg {
   color: var(--orange);
 }
 
-.sidenav ul li a.active {
-  color: var(--orange);
-}
-
-.sidenav ul li a.active svg {
-  color: var(--orange);
+.cai-logo-bottom {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: var(--dark-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 20px auto 0;
+  flex-shrink: 0;
 }
 
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  height: 100vh;
 }
 
 .top-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px 30px;
   background-color: var(--dark-gray);
   color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.software-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--orange);
 }
 
 .user-profile {
@@ -153,5 +203,7 @@
 }
 
 .content-area {
-  padding: 20px;
+  padding: 0;
+  overflow-y: auto;
+  flex-grow: 1;
 }
