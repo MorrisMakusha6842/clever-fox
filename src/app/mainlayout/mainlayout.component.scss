@@ -1,0 +1,157 @@
+.main-layout {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../image.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  z-index: -1;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  color: var(--white);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.main-layout.sidenav-collapsed .sidenav {
+  width: 80px;
+  padding: 20px 10px;
+}
+
+.ai-section {
+  background-color: var(--white);
+  height: 50px;
+  width: 100%;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 15px;
+  transition: all 0.3s ease;
+}
+
+.main-layout.sidenav-collapsed .ai-section {
+  width: 50px;
+  border-radius: 50%;
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-btn svg {
+  width: 24px;
+  height: 24px;
+  color: var(--dark-gray);
+}
+
+.sidenav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.sidenav ul li a svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+.main-layout.sidenav-collapsed .sidenav ul li a {
+  justify-content: center;
+  padding: 10px;
+}
+
+.main-layout.sidenav-collapsed .sidenav ul li a span {
+  display: none;
+}
+
+.main-layout.sidenav-collapsed .sidenav ul li a svg {
+  margin-right: 0;
+}
+
+.sidenav ul li a:hover {
+  color: var(--orange);
+}
+
+.sidenav ul li a:hover svg {
+  color: var(--orange);
+}
+
+.sidenav ul li a.active {
+  color: var(--orange);
+}
+
+.sidenav ul li a.active svg {
+  color: var(--orange);
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+.content-area {
+  padding: 20px;
+}

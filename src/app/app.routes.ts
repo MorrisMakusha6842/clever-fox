@@ -23,14 +23,13 @@ export const routes: Routes = [
     component: LogInComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [authGuard]
-  },
-  {
     path: 'mainlayout',
     component: MainlayoutComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent }
+    ]
   },
   {
     path: 'functionality',

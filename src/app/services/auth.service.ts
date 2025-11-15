@@ -48,6 +48,7 @@ export class AuthService {
           uid: user.uid,
           email: user.email!,
           displayName: displayName,
+          role: 'agent',
         };
         this.agentsService.addAgent(agent).subscribe({
           next: () => this.router.navigate(['/mainlayout']),

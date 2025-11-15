@@ -17,7 +17,7 @@ export class SignUpComponent {
   loading = false;
 
   credentials = {
-    username: '',
+    displayName: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -27,7 +27,7 @@ export class SignUpComponent {
     if (this.loading) return;
     this.loading = true;
     try {
-      await this.authService.registerWithEmail(this.credentials.email, this.credentials.password, this.credentials.username);
+      await this.authService.registerWithEmail(this.credentials.email, this.credentials.password, this.credentials.displayName);
     } catch (error) {
       console.error('Registration failed', error);
       // Optionally, show an error message to the user
