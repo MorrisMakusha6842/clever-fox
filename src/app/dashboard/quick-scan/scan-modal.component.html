@@ -1,0 +1,22 @@
+<div class="modal-overlay" *ngIf="isOpen">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Nmap Scan Configuration</h2>
+      <button class="close-button" (click)="onClose()">X</button>
+    </div>
+    <div class="modal-body">
+      <div class="scan-form">
+        <select [(ngModel)]="selectedCommand" class="command-select">
+          <option *ngFor="let command of commands" [value]="command.id">{{ command.name }}</option>
+        </select>
+        <input type="text" [(ngModel)]="target" placeholder="Enter target IP or hostname" class="target-input">
+        <button (click)="runScan()" [disabled]="isLoading" class="scan-button">
+          {{ isLoading ? 'Scanning...' : 'Run Scan' }}
+        </button>
+      </div>
+      <div class="results-container">
+        <pre class="scan-results">{{ scanResults }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

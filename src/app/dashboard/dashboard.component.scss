@@ -8,12 +8,13 @@
   display: grid;
   gap: 20px;
   font-family: 'SF Pro Display', sans-serif;
+  padding: 10px;
 }
 
 .hero-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows */
   gap: 20px;
 }
 
