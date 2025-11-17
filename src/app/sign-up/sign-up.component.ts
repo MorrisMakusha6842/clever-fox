@@ -3,6 +3,8 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ToastService } from '../services/toast.service';
+import { DependencyCheckService } from '../services/dependency-check.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,6 +16,8 @@ import { AuthService } from '../services/auth.service';
 export class SignUpComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  toastService = inject(ToastService);
+  dependencyCheckService = inject(DependencyCheckService);
   loading = false;
 
   credentials = {
@@ -28,12 +32,24 @@ export class SignUpComponent {
     this.loading = true;
     try {
       await this.authService.registerWithEmail(this.credentials.email, this.credentials.password, this.credentials.displayName);
-    } catch (error) {
-      console.error('Registration failed', error);
-      // Optionally, show an error message to the user
+      this.toastService.show('Account created successfully!', 'success');
+      this.checkDependencies();
+    } catch (error: any) {
+      this.toastService.show(error.message, 'error');
     } finally {
       this.loading = false;
     }
+  }
+
+  private checkDependencies() {
+    // In a real implementation, you would get the machineId from the local agent.
+    // For now, we'll use a placeholder.
+    const machineId = 'local-machine'; 
+    this.dependencyCheckService.checkNmapStatus(machineId).subscribe(isInstalled => {
+      if (!isInstalled) {
+        this.toastService.show('Nmap is not installed. Please install it to use the scanning features.', 'warning');
+      }
+    });
   }
 
   navigateTo(route: string): void {
