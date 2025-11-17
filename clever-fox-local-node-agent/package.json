@@ -1,0 +1,22 @@
+{
+  "name": "clever-fox-local-node-agent",
+  "version": "1.0.0",
+  "description": "Local agent for Clever Fox to run Nmap and Osquery commands.",
+  "main": "agent.js",
+  "scripts": {
+    "start": "node agent.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nmap",
+    "osquery",
+    "firebase",
+    "agent"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "uuid": "^9.0.1"
+  }
+}
