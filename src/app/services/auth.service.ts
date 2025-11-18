@@ -1,18 +1,18 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from './toast.service';
 import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
   authState,
-  User,
-  GoogleAuthProvider,
   signInWithPopup,
   sendEmailVerification,
   updateProfile,
 } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { User, GoogleAuthProvider } from 'firebase/auth';
+import { Observable, map } from 'rxjs';
 import { AgentsService, Agent } from './agents.service';
 
 @Injectable({
@@ -22,13 +22,19 @@ export class AuthService {
   private auth: Auth = inject(Auth);
   private router: Router = inject(Router);
   private agentsService: AgentsService = inject(AgentsService);
+  private toastService: ToastService = inject(ToastService);
 
   currentUser: Observable<User | null> = authState(this.auth);
+
+  isAuthenticated(): Observable<boolean> {
+    return this.currentUser.pipe(map((user) => !!user));
+  }
 
   async loginWithEmail(email: string,password: string): Promise<void> {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       if (userCredential.user) {
+        this.toastService.show('Logged in successfully!', 'success');
         this.router.navigate(['/mainlayout']);
       }
     } catch (error) {
@@ -88,7 +94,4 @@ export class AuthService {
     this.router.navigate(['/log-in']);
   }
 
-  isAuthenticated(): boolean {
-    return !!this.auth.currentUser;
-  }
 }

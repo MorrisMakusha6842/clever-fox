@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { Firestore, collection, doc, setDoc, getDoc, updateDoc, serverTimestamp, FieldValue } from '@angular/fire/firestore';
+import { Firestore, collection, doc, setDoc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { serverTimestamp, FieldValue } from 'firebase/firestore';
 import { from, switchMap } from 'rxjs';
 
 export interface Agent {
